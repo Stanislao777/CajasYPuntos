@@ -1,0 +1,109 @@
+.{
+    box-sizing: border-box;
+}
+
+.pageWelcome {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/fondo.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.homePage {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/fondo1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.playWithFriends {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/fondo2.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.button-no-style {
+    padding: 0;
+    border-width: 0px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.body {
+    text-align: center;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:link {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.letra {
+    text-align: left;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.percent-count {
+        width: 40px;
+        height: 0px;
+        margin: 100px auto;
+        font-size: 30px;
+        text-align: center;
+        color: #fff; 
+}
+
+.progress-bar {
+    width: 506px;
+    height: 26px;
+    background-color: #bbb;
+    border-radius: 13px;
+    padding: 3px;
+    margin: 50px auto;
+}
+
+.progress {
+    width: 20px;
+    height: 25px;
+    border-radius: 10px; 
+    background-color:black;
+}
+
+p {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+}
+
+
+#formulario{
+    margin: 0 auto;
+    align-content: center;
+    border-radius: 10px;
+    border: 1px solid #666666;
+    width: 500px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-evenly;
+}

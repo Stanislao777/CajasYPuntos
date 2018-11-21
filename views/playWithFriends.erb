@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <STYLE>@import url(style.css);</STYLE>
+    </head>
+
+    <body class="playWithFriends">
+        <center><input type="button" onclick=" location.href='/playWithFriends' " value="Recargar" name="boton"  style='width:70px; height:70px' /></center>
+        &nbsp&nbsp
+    
+        <div class= "title">
+            <div>
+                <h1>Jugador 1: <%= @game.getPlayer1Score %></h1>
+            </div>
+            <div>
+                <h1>Jugador 2: <%= @game.getPlayer2Score %></h1>
+            </div>
+        </div>
+    
+        <div class="title">
+            <% if @game.getBoard.getWidth * @game.getBoard.getHeight == @game.getPlayer1Score + @game.getPlayer2Score %>
+                <% if @game.getPlayer1Score > @game.getPlayer2Score %>
+                    <h1 style="color: red;">Gano jugador 1</h1>
+                <% end %>
+                <% if @game.getPlayer2Score > @game.getPlayer1Score %>
+                    <h1 style="color: green;">Gano jugador 2</h1>
+                <% end %>
+                <% if @game.getPlayer1Score == @game.getPlayer2Score %>
+                    <h1 style="color: white;">Empate</h1>
+                <% end %>
+            <% else %>
+                <% if @game.getTurn == 1 %>
+                    <h1 style="color: red;">Turno del jugador 1</h1>
+                <% else %>
+                    <h1 style="color: green;">Turno del jugador 2</h1>
+                <% end %>
+            <% end %>
+        </div>
+        
+        <% value = 0 %>
+        <% squarePosition = 0 %>
+        <form method="post" action='/playWithFriends'>
+            <div style="display: flex;justify-content: center;flex-flow: wrap;">
+                <% for a in 1..@game.getBoard.getHeight do %>
+                    <% for b in 1..@game.getBoard.getWidth do %>
+                        <img src="images/circle-base.png">
+                        <% if @game.getBoard.getSides[value] %>
+                            <button disabled class="button-no-style" value=<%= value %> name="selection"><img src="images/selected-horizontal.png"></button>
+                        <% else %>
+                            <button class="button-no-style" value=<%= value %> name="selection"><img src="images/select-horizontal.png"></button>
+                        <% end %>
+                        <% value = value + 1 %>
+                    <% end %>
+                    <img src="images/circle-base.png">
+                    <div style="width: 100%;"></div>
+                    <% for b in 1..@game.getBoard.getWidth do %>
+                        <% if @game.getBoard.getSides[value] %>
+                            <button disabled class="button-no-style" value=<%= value %> name="selection"><img src="images/selected-vertical.png"></button>
+                        <% else %>
+                            <button class="button-no-style" value=<%= value %> name="selection"><img src="images/select-vertical.png"></button>
+                        <% end %>
+                        <% if @game.getBoard.getSquares[squarePosition] == 0 %>
+                            <img src="images/square-base.png">
+                        <% end %>
+                        <% if @game.getBoard.getSquares[squarePosition] == 1 %>
+                            <img src="images/square-player-1.png">
+                        <% end %>
+                        <% if @game.getBoard.getSquares[squarePosition] == -1 %>
+                            <img src="images/square-player-2.png">
+                        <% end %>
+                        <% squarePosition = squarePosition + 1 %>
+                        <% value = value + 1 %>
+                    <% end %>
+                    <% if @game.getBoard.getSides[value] %>
+                        <button disabled class="button-no-style" value=<%= value %> name="selection"><img src="images/selected-vertical.png"></button>
+                    <% else %>
+                        <button class="button-no-style" value=<%= value %> name="selection"><img src="images/select-vertical.png"></button>
+                    <% end %>
+                    <div style="width: 100%;"></div>
+                    <% value = value + 1 %>
+                <% end %>
+                <% for b in 1..@game.getBoard.getWidth do %>
+                    <img src="images/circle-base.png">
+                    <% if @game.getBoard.getSides[value] %>
+                        <button disabled class="button-no-style" value=<%= value %> name="selection"><img src="images/selected-horizontal.png"></button>
+                    <% else %>
+                        <button class="button-no-style" value=<%= value %> name="selection"><img src="images/select-horizontal.png"></button>
+                    <% end %>
+                    <% value = value + 1 %>
+                <% end %>
+                <img src="images/circle-base.png">
+                <div style="width: 100%;"></div>
+            </div>
+        </form>
+    </body>
+</html>
