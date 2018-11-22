@@ -3,7 +3,7 @@ Feature: Jugar con amigos
         Quiero iniciar una partida
         Para jugar con mis amigos
 
-        Scenario: pagina principal
+        Scenario: Jugar partida con amigos
             Given visito la pagina "/homePage"
             When presiono el link "Jugar con amigos"
-            Then deberia ver el titulo "Turno del jugador 1"
+            Then deberia ir a la pagina "/playWithFriends"
