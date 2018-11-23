@@ -4,10 +4,7 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 
-Capybara.app =Sinatra::Application
-RSpec.configure do |config|
-  config.include Capybara
-end
+Capybara.app = App
 
 class MyWorld
   include Capybara::DSL
