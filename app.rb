@@ -1,8 +1,8 @@
 require 'sinatra'
 require './lib/game'
-
 class App < Sinatra::Base
 
+    enable :sessions
     get "/" do
         erb :welcome
     end
