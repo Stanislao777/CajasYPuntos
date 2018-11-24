@@ -3,13 +3,13 @@ require './lib/game'
 describe Game do
     
     before(:each) do
-        @game = Game.new(3, 3)
+        @game = Game.new(3, 3, 2)
     end
 
     it "deberia retonar los datos iniciales" do
-        expect(@game.getPlayer1Score).to eq(0)
-        expect(@game.getPlayer2Score).to eq(0)
-        expect(@game.getTurn).to eq(1)
+        expect(@game.getPlayerScore(0)).to eq(0)
+        expect(@game.getPlayerScore(1)).to eq(0)
+        expect(@game.getTurn).to eq(0)
     end
 
     it "deberia retornar el tablero del juego" do
@@ -19,7 +19,7 @@ describe Game do
 
     it "deberia cambiar el turno del jugador" do
         @game.pressBoard(0)
-        expect(@game.getTurn).to eq(-1)
+        expect(@game.getTurn).to eq(1)
     end
 
     it "deberia jugador2 obtener un nuevo turno y puntaje" do
@@ -27,9 +27,9 @@ describe Game do
         @game.pressBoard(3)
         @game.pressBoard(4)
         @game.pressBoard(7)
-        expect(@game.getTurn).to eq(-1)
-        expect(@game.getPlayer1Score).to eq(0)
-        expect(@game.getPlayer2Score).to eq(1)
+        expect(@game.getTurn).to eq(1)
+        expect(@game.getPlayerScore(0)).to eq(0)
+        expect(@game.getPlayerScore(1)).to eq(1)
     end
 
     it "deberia jugador1 obtener un nuevo turno y puntaje" do
@@ -38,9 +38,9 @@ describe Game do
         @game.pressBoard(4)
         @game.pressBoard(10)
         @game.pressBoard(7)
-        expect(@game.getTurn).to eq(1)
-        expect(@game.getPlayer1Score).to eq(1)
-        expect(@game.getPlayer2Score).to eq(0)
+        expect(@game.getTurn).to eq(0)
+        expect(@game.getPlayerScore(0)).to eq(1)
+        expect(@game.getPlayerScore(1)).to eq(0)
     end
 
     it "deberia jugador1 obtener un nuevo turno y doble puntaje" do
@@ -51,8 +51,8 @@ describe Game do
         @game.pressBoard(7)
         @game.pressBoard(8)
         @game.pressBoard(4)
-        expect(@game.getTurn).to eq(1)
-        expect(@game.getPlayer1Score).to eq(2)
-        expect(@game.getPlayer2Score).to eq(0)
+        expect(@game.getTurn).to eq(0)
+        expect(@game.getPlayerScore(0)).to eq(2)
+        expect(@game.getPlayerScore(1)).to eq(0)
     end
 end
