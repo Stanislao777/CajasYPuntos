@@ -107,3 +107,19 @@ p {
     display: flex;
     justify-content: space-evenly;
 }
+
+.winner-1 {
+    color: red;
+}
+
+.winner-2 {
+    color: green;
+}
+
+.winner-3 {
+    color: yellow;
+}
+
+.winner-4 {
+    color: pink;
+}

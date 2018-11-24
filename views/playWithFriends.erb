@@ -10,31 +10,25 @@
         &nbsp&nbsp
     
         <div class= "title">
-            <div>
-                <h1>Jugador 1: <%= @game.getPlayer1Score %></h1>
-            </div>
-            <div>
-                <h1>Jugador 2: <%= @game.getPlayer2Score %></h1>
-            </div>
+            <% for b in 0..(@game.getNumberPlayers - 1) do %>
+                <div>
+                    <h1>Jugador <%= (b + 1) %>: <%= @game.getPlayerScore(b) %></h1>
+                </div>
+            <% end %>
         </div>
     
         <div class="title">
-            <% if @game.getBoard.getWidth * @game.getBoard.getHeight == @game.getPlayer1Score + @game.getPlayer2Score %>
-                <% if @game.getPlayer1Score > @game.getPlayer2Score %>
-                    <h1 style="color: red;">Gano jugador 1</h1>
+            <% if @game.isBoardComplete %>
+                <% for b in 0..(@game.getNumberPlayers - 1) do %>
+                    <% if @game.isPlayerWin(b) %>
+                        <h1 class="winner-<%= b %>">Gano jugador <%= (b + 1) %></h1>
+                    <% end %>
                 <% end %>
-                <% if @game.getPlayer2Score > @game.getPlayer1Score %>
-                    <h1 style="color: green;">Gano jugador 2</h1>
-                <% end %>
-                <% if @game.getPlayer1Score == @game.getPlayer2Score %>
+                <% if @game.isTie %>
                     <h1 style="color: white;">Empate</h1>
                 <% end %>
             <% else %>
-                <% if @game.getTurn == 1 %>
-                    <h1 style="color: red;">Turno del jugador 1</h1>
-                <% else %>
-                    <h1 style="color: green;">Turno del jugador 2</h1>
-                <% end %>
+                <h1 class="winner-<%= (@game.getTurn + 1) %>">Turno del jugador <%= (@game.getTurn + 1) %></h1>
             <% end %>
         </div>
         
@@ -60,14 +54,10 @@
                         <% else %>
                             <button class="button-no-style" value=<%= value %> name="selection"><img src="images/select-vertical.png"></button>
                         <% end %>
-                        <% if @game.getBoard.getSquares[squarePosition] == 0 %>
-                            <img src="images/square-base.png">
-                        <% end %>
-                        <% if @game.getBoard.getSquares[squarePosition] == 1 %>
-                            <img src="images/square-player-1.png">
-                        <% end %>
-                        <% if @game.getBoard.getSquares[squarePosition] == -1 %>
-                            <img src="images/square-player-2.png">
+                        <% for b in 0..@game.getNumberPlayers %>
+                            <% if @game.getBoard.getSquares[squarePosition] == b %>
+                                <img src="images/square-player-<%= b %>.png">
+                            <% end %>
                         <% end %>
                         <% squarePosition = squarePosition + 1 %>
                         <% value = value + 1 %>

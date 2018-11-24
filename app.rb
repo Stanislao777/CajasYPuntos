@@ -14,7 +14,7 @@ class App < Sinatra::Base
     get '/playWithFriends' do
         width = 3
         height = 3
-        $GAME = Game.new(width, height)
+        $GAME = Game.new(width, height, 4)
         @game = $GAME
         erb :playWithFriends
     end
