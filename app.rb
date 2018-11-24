@@ -12,17 +12,20 @@ class App < Sinatra::Base
     end
 
     get '/playWithFriends' do
+        erb :selection
+    end
+
+    post '/playWithFriends' do    
         width = 3
         height = 3
-        $GAME = Game.new(width, height, 4)
+        $GAME = Game.new(width, height, params[:selection].to_i)
         @game = $GAME
         erb :playWithFriends
     end
 
-    post '/playWithFriends' do
+    post '/game' do
         response = $GAME.pressBoard(params[:selection].to_i)
         @game = $GAME
-        erb :playWithFriends
     end
 
     run! if app_file== $0;

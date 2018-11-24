@@ -6,7 +6,7 @@
 
     <body class="playWithFriends">
     <h1>Elegir jugadores</h1>
-        <center><input type="button" onclick=" location.href='/playWithFriends' " value="Recargar" name="boton"  style='width:70px; height:70px' /></center>
+        <center><input type="button" onclick=" location.href='/game' " value="Recargar" name="boton"  style='width:70px; height:70px' /></center>
         &nbsp&nbsp
     
         <div class= "title">
@@ -34,7 +34,7 @@
         
         <% value = 0 %>
         <% squarePosition = 0 %>
-        <form method="post" action='/playWithFriends'>
+        <form method="post" action='/game'>
             <div style="display: flex;justify-content: center;flex-flow: wrap;">
                 <% for a in 1..@game.getBoard.getHeight do %>
                     <% for b in 1..@game.getBoard.getWidth do %>
