@@ -16,8 +16,8 @@ class App < Sinatra::Base
     end
 
     post '/playWithFriends' do    
-        width = 3
-        height = 3
+        width = 2
+        height = 2
         $GAME = Game.new(width, height, params[:selection].to_i)
         @game = $GAME
         erb :playWithFriends
@@ -26,6 +26,7 @@ class App < Sinatra::Base
     post '/game' do
         response = $GAME.pressBoard(params[:selection].to_i)
         @game = $GAME
+        erb :playWithFriends
     end
 
     run! if app_file== $0;
