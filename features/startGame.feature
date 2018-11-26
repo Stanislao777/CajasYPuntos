@@ -3,7 +3,8 @@ Feature: Jugar con amigos
         Quiero iniciar una partida
         Para jugar con mis amigos
 
-        Scenario: Jugar partida con amigos
-            Given visito la pagina "/homePage"
-            When presiono el link "Jugar con amigos"
-            Then deberia ir a la pagina /playWithFriends con el titulo "Elegir jugadores"
+        Scenario: Jugar con un amigo
+            Given visito la pagina Elegir Jugadores
+            When presiono el boton "2 jugadores"
+            Then deberia ir a la pagina /playWithFriends con el titulo "Jugador 1: 0" 
+            And mostrar el titulo "Jugador 2: 0" 

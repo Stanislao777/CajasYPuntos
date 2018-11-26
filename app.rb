@@ -16,8 +16,8 @@ class App < Sinatra::Base
     end
 
     post '/playWithFriends' do    
-        width = 2
-        height = 2
+        width = 3
+        height = 3
         $GAME = Game.new(width, height, params[:selection].to_i)
         @game = $GAME
         erb :playWithFriends
