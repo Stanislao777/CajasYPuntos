@@ -7,5 +7,5 @@ Then("veo mensaje {string}") do |string|
 end
 
 Then("muestra {string}") do |string|
-    #expect(page).to have_content('barra de progreso')
+    expect(page).to have_content(text)
 end
